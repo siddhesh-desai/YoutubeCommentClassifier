@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/9f84562e7d.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://assets.website-files.com/62aee78456e4207786ac4d18/62b0fad1a8cf6a4c26b3cb5e_Faivcon%2032.svg"
+    rel="shortcut icon" type="image/x-icon" />
+  <title>Classifier</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var cnt1 = parseInt('{{ cnt_array[1] }}');
+      var cnt2 = parseInt('{{ cnt_array[2] }}');
+      var cnt3 = parseInt('{{ cnt_array[3] }}');
+      var cnt4 = parseInt('{{ cnt_array[4] }}');
+
+      var data1 = google.visualization.arrayToDataTable([
+        ['Type', 'No. of Comments'],
+        ['Relevant', cnt1],
+        ['Spam', cnt2]
+      ]);
+      var data2 = google.visualization.arrayToDataTable([
+        ['Type', 'No. of Comments'],
+        ['Appreciation', cnt3],
+        ['Grievance', cnt4]
+      ]);
+
+      var option1 = {
+        title: 'Relevant vs Spam Comments'
+      };
+      var option2 = {
+        title: 'Appreciation vs Grievance Comments'
+      };
+
+      var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
+      var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+
+      chart1.draw(data1, option1);
+      chart2.draw(data2, option2);
+    }
+  </script>
+</head>
+
+<body style="background-color: rgba(191, 231, 255, 0.941);">
+  <nav>
+    <a href="" class="title-logo"></a>
+    <div class="login-nav-content">
+      <a href="{{url_for('logout')}}"><button class="nav-btn">Logout</button></a>
+    </div>
+  </nav>
+
+  <div class="box">
+    <h1>Total number of comments = {{cnt_array[0]}}</h1>
+  </div>
+  <div class="outer-container">
+    <div id="piechart1" class="visual"></div>
+    <div id="piechart2" class="visual"></div>
+  </div>
+  <h1 style="text-align: center; margin-top: 3%;">Which type of comments you want to see?</h1>
+  <form method="POST" action="/all" class="inner_container">
+    <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;" value="All">All</button>
+    <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"
+      value="Relevant">Relevant</button>
+    <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;" value="Spam">Spam</button>
+    <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"
+      value="Appreciation">Appreciation</button>
+    <button type="submit" name="button_name" class="big-button" style="border-radius: 10px;"
+      value="Grievance">Grievance</button>
+  </form>
+</body>
+
+</html>
