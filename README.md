@@ -1,10 +1,11 @@
 <a name="readme-top"></a>
 
-<!-- PROJECT LOGO -->
-<br/>
 <div align="center">
 
   <h3 align="center"><b>Youtube Comment Classifier</b></h3>
+
+
+
 
   <p align="center">
     Youtube Comment Classifier is a platform designed to classify youtube comments based on the user's need.
@@ -23,7 +24,9 @@
 <!-- ABOUT THE PROJECT -->
 <br>
 
-## ♾️ About The Projects
+https://github.com/user-attachments/assets/699c7908-86cd-487e-9734-92af3d8979aa
+
+## ♾️ About The Project
 
 YouTube comment classifier project is aimed to analyze and categorize comments on YouTube videos, using a combination of sentiment analysis and a Multinomial Naive Bayes Classifier. This project was developed using Flask, a Python web framework, and integrated with the Google YouTube API to fetch comments from YouTube videos. The primary objective of this project was to efficiently filter and categorize comments into five main categories: spam, relevant, appreciation, grievance and all comments.
 
